@@ -1,5 +1,5 @@
 class CreateComments < ActiveRecord::Migration[5.2]
-  def change
+  def changeRails simpleblog: test
     create_table :comments do |t|
       t.string :author
       t.string :content

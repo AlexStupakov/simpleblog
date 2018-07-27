@@ -1,13 +1,7 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  name: MyString
-  content: MyText
+valid:
+  name: Some Author.
+  content: some content
   filename: MyString
-  category_id: 
-
-two:
-  name: MyString
-  content: MyText
-  filename: MyString
-  category_id: 
+  category: valid
