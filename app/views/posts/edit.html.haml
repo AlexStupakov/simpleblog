@@ -1,0 +1,8 @@
+- provide(:page_title, 'Editing post')
+
+%ul.pager
+  %li.previous
+    = link_to '← Back to posts', category_posts_path
+
+%h1 Editing post
+= render 'form'

@@ -1,0 +1,11 @@
+= form_for(@category) do |f|
+  .form-group
+    = f.label :name
+    %br/
+    = f.text_field :name, class: 'form-control'
+  .form-group
+    = f.label :description
+    %br/
+    = f.text_area :description, class: 'form-control'
+  .form-group.text-right
+    = f.submit class: 'btn btn-primary'

@@ -1,0 +1,29 @@
+@import 'bootstrap-sprockets';
+@import 'bootstrap';
+
+#comments, #comments li {
+  margin: 0;
+  padding: 0;
+}
+
+#comments li {
+  list-style: none;
+}
+
+.panel-categories {
+  margin-top: 50px;
+}
+
+.category-description {
+  margin: 10px;
+}
+
+.buttons {
+  padding-left: 10px;
+  font-size: 17px
+}
+
+.preferences {
+  padding-top: 5px;
+  font-size: 15px
+}

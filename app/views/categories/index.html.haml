@@ -1,0 +1,38 @@
+- provide(:page_title, 'All categories')
+.panel.panel-default.panel-categories
+  .panel-heading
+    %h2
+      All Blog Categories
+      = link_to 'add a new category',
+                new_category_path,
+                class: 'pull-right lead'
+  %ul.list-group
+    - if @categories.blank?
+      %li.list-group-item
+        .lead.text-center
+          %br
+          No categories yet
+
+    - @categories.each do |category|
+      %li.list-group-item
+        .lead
+          = link_to category.name,
+                    category_posts_path(category),
+                    title: 'see posts'
+          .pull-right.preferences
+            = pluralize(category.comments.count, 'comment')
+            ,
+            = pluralize(category.posts.count, 'post')
+            ,
+            %em
+              = category.updated_at.strftime("Created on %m/%d/%Y at %I:%M%p")
+            %span.buttons
+              = link_to edit_category_path(category.id),
+                        title: 'edit category' do
+                %span.glyphicon.glyphicon-pencil
+              = link_to category_path(category.id),
+                        method: :delete,
+                        data: { confirm: 'Are you sure?' },
+                        title:  'remove category' do
+                %span.glyphicon.glyphicon-remove
+        = cut_text category.description

@@ -1,0 +1,50 @@
+- provide(:page_title, "All post for #{@category.name}")
+%ul.pager
+  %li.previous
+    = link_to '← Back to categories', categories_path
+  %li.previous
+    = link_to 'add a new post', new_category_post_path
+
+.panel.panel-default
+  .panel-heading
+    %h2
+      %strong
+        Posts for category:
+      = @category.name
+    .lead.category-description
+      %strong
+        Description:
+      = @category.description
+  %ul.list-group
+    - if @posts.blank?
+      %li.list-group-item
+        .lead.text-center
+          %br
+          No posts for category '#{@category.name}' yet
+
+    - @posts.each do |post|
+      %li.list-group-item
+        .lead
+          = link_to post.name,
+                    category_post_path(post.category_id, post.id),
+                    title: 'see details...'
+          .pull-right.preferences
+            = pluralize(post.comments.count, 'comment')
+            ,
+            %em
+              = post.updated_at.strftime("Printed on %m/%d/%Y at %I:%M%p")
+            %span.buttons
+              = link_to edit_category_post_path(post.category_id, post.id),
+                        title: 'edit post' do
+                %span.glyphicon.glyphicon-pencil
+              = link_to category_post_path(post.category_id, post.id),
+                        method: :delete,
+                        data: { confirm: 'Are you sure?' },
+                        title: 'remove post' do
+                %span.glyphicon.glyphicon-remove
+        = cut_text post.content
+
+= render( partial: 'comments/form', locals: { remote: true })
+%h3 Comments:
+.own-comments.panel-body
+  = render @category.comments.last_some

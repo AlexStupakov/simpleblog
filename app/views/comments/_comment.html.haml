@@ -1,0 +1,10 @@
+%ul#comments.comments
+  %li.comment
+    .clearfix
+      %h4.pull-left
+        = comment.author
+      %p.pull-right
+        = time_tag comment.created_at
+    %p
+      %em
+        = comment.content

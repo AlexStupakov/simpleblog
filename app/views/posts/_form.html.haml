@@ -1,0 +1,21 @@
+= form_for([@category, @post], html: { multipart: true }) do |f|
+  .form-group
+    = f.label :name
+    %br
+    = f.text_field :name, class: 'form-control'
+  .form-group
+    = f.label :content
+    %br
+    = f.text_area :content, class: 'form-control'
+  .form-group
+    = f.label :file
+    %br
+    = image_tag(@post.filename_url) if @post.filename?
+    = f.file_field :file, class: 'form-control'
+    = f.hidden_field :filename_cache
+  .form-group
+    = f.label :category_id
+    %br
+    = f.select :category_id, options_for_select(Category.order(:name).pluck(:name, :id), params[:category_id]), {}, class: 'form-control'
+  .form-group.text-right
+    = f.submit class: 'btn btn-primary'

@@ -1,0 +1,8 @@
+- provide(:page_title, 'New category')
+
+%ul.pager
+  %li.previous
+    = link_to '← Back to categories', categories_path
+
+%h1 New category
+= render 'form'
