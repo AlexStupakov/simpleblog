@@ -18,5 +18,5 @@
 .row
   = render( partial: 'comments/form', locals: { remote: true })
 %h3 Comments:
-#messages.own-comments.panel-body
+#comments.own-comments.panel-body{data: {"post-id" => @post.id}}
   = render @post.comments.last_some

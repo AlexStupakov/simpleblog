@@ -1,13 +1,8 @@
 class CommentsChannel < ApplicationCable::Channel
   def subscribed
-    stream_from "comments_channel"
+    stream_from "comments_post#{params['post_id']}_category#{params['category_id']}_channel"
   end
 
   def unsubscribed
-  end
-
-  def speak(data)
-    p ["data",data]
-    ActionCable.server.broadcast "comments_channel", message: data['message']
   end
 end
