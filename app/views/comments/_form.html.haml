@@ -1,14 +1,19 @@
 - remote ||= false
 .well
   %h4 Leave a comment
-  = form_for(@comment, remote: remote, html: { role: 'form', class: 'clearfix' }) do |f|
+  = form_for(@comment, remote: remote, html: { role: 'form', class: 'clearfix comments_form', id: 'new-message' }) do |f|
     .form-group
       = f.label :author, class: 'sr-only'
       = f.text_field :author, placeholder: 'Author', class: 'form-control'
     .form-group
       = f.label :content, class: 'sr-only'
-      = f.text_area :content, placeholder: 'Content', class: 'form-control'
+      = f.text_area :content,
+        placeholder: 'Content',
+        class: 'form-control text_comment',
+        id: 'message-body'
     .text-right
       = f.hidden_field :comment_goal_type
       = f.hidden_field :comment_goal_id
-      = f.submit 'Send', class: 'btn btn-primary'
+      = f.submit 'Send',
+        class: 'btn btn-primary submit_comment',
+        id: 'message-submit'

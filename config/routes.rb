@@ -5,4 +5,6 @@ Rails.application.routes.draw do
     end
   end
   resources :comments, only: [:show, :create]
+
+  mount ActionCable.server => '/cable'
 end

@@ -1,3 +1,5 @@
 $('#flash-messages').append('<%= j render(:partial => 'shared/flash_messages') %>');
 $('.own-comments').html('<%= j render @comments %>');
 $('#comment_content').val('');
+//console.log(App.messages.speak());
+//App.messages.speak('<%= j render @comments %>');
